@@ -90,7 +90,17 @@ def file_handler(update, context):
     
     print (fileid)
     
-    
+def broadcast_msg(list_of_groups, msg):
+    for group_id in list_of_groups:
+    to_url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}&parse_mode=HTML'.format(token, group_id , msg)
+    resp = requests.get(to_url)
+    print(resp.text)
+
+
+list_of_groups= ['-563054066','-304181322','-54200243']
+msg ="Iphone Prices have reduced by 10%, go and grab them now"
+broadcast_msg(list_of_groups, msg)
+print("program ended")
     
     
     
@@ -122,6 +132,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.photo, photo_handler))
     dp.add_handler(MessageHandler(Filters.document, file_handler))
+    dp.add_handler(MessageHandler(Filters.all, broadcast_msg))
     
 
     # log all errors
