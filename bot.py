@@ -90,17 +90,7 @@ def file_handler(update, context):
     
     print (fileid)
     
-def broadcast_msg(list_of_groups, msg):
-    for group_id in list_of_groups:
-    to_url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}&parse_mode=HTML'.format(token, group_id , msg)
-    resp = requests.get(to_url)
-    print(resp.text)
-
-
-list_of_groups= ['-563054066','-304181322','-54200243']
-msg ="Iphone Prices have reduced by 10%, go and grab them now"
-broadcast_msg(list_of_groups, msg)
-print("program ended")
+    
     
     
     
@@ -117,7 +107,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("2049539738:AAGhVsgmA4TqD4pNikX4lyZSJkYxvdAm1To", use_context=True)
+    updater = Updater("1433983998:AAHoiInziufUT9MOF51LFzRKnJR1xZcJquI", use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -132,7 +122,6 @@ def main():
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.photo, photo_handler))
     dp.add_handler(MessageHandler(Filters.document, file_handler))
-    dp.add_handler(MessageHandler(Filters.all, broadcast_msg))
     
 
     # log all errors
