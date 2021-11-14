@@ -19,6 +19,7 @@ import logging
 import telegram
 import os
 import sys
+import requests
 
 
 import bot
@@ -70,6 +71,18 @@ def echo(update, context):
        context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(pic,'rb'))
     
     elif "http" in mes: 
+         def is_downloadable(url):
+             """
+             Does the url contain a downloadable resource
+             """
+             h = requests.head(url, allow_redirects=True)
+             header = h.headers
+             content_type = header.get('content-type')
+             if 'text' in content_type.lower():
+                 return False
+             if 'html' in content_type.lower():
+                 return False
+             return True
          if str(is_downloadable(mes)):
             update.message.reply_text("Hey it is an Downloadable Link")
             if mes.find('/'):
