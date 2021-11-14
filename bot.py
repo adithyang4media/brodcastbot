@@ -82,6 +82,7 @@ def photo_handler(update, context):
     
 def file_handler(update, context):
     update.message.reply_text("I Recognied This as a document ")
+    print (update.message.document[-1].file_name)
     
     fileid = file_id = update.message.document[-1].file_id
     img = 'AgACAgUAAxkBAAPhYY_0PJPm26fFXI1CY16m3lzbxFEAAqytMRuuy3lUA0If8V2l7rYBAAMCAAN5AAMiBA'
