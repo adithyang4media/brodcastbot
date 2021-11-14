@@ -87,6 +87,8 @@ def file_handler(update, context):
     update.message.reply_text("I Recognied This as a document ")
     print (update.message.document.file_name)
     
+    
+    global filesname
     fileid = update.message.document.file_id
     filesname = update.message.document.file_name
     file = context.bot.getFile(fileid)
@@ -95,11 +97,17 @@ def file_handler(update, context):
     
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
     
+    update.message.reply_text("Enter File Name With Extention")
+    
+    return NAMER
     
     
     
     
     
+def rename(update, context):
+    fln=update.message.text
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
     
     
 def admin_handler(update, context):
@@ -110,15 +118,7 @@ def admin_handler(update, context):
        update.message.replyDocument(update.message.document.thumb[-1])
        context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(file, 'rb'), filename="sample.pdf")    
       
-       context.bot.SendTextMessage(update.Message.Chat.Id, "Type A Name For File");
-       if (update.Message.ReplyToMessage.Text.Contains("your username"))
-          {
-            
-   
-            context.bot.SendChatAction(update.Message.Chat.Id, ChatAction.Typing);
-            context.bot.SendTextMessage(update.Message.Chat.Id, "Username has been successfully saved!");
-          }
-    
+       
     
     
     
@@ -149,8 +149,23 @@ def main():
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.photo, photo_handler))
-    dp.add_handler(MessageHandler(Filters.document, file_handler))
+    # dp.add_handler(MessageHandler(Filters.document, file_handler))
     dp.add_handler(MessageHandler(Filters.all, admin_handler))
+    
+    
+    
+    conv_handler = ConversationHandler(
+        entry_points=[MessageHandler(Filters.document, file_handler)],
+        states={
+            
+            NAMER: [MessageHandler(Filters.text, rename)]
+            
+        },
+        fallbacks=[CommandHandler('cancel', cancel)],
+    )
+ 
+    dispatcher.add_handler(conv_handler)
+
     
 
     # log all errors
