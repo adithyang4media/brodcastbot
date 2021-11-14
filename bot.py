@@ -174,7 +174,7 @@ def main():
         fallbacks=[CommandHandler('cancel', cancel)],
     )
  
-    dispatcher.add_handler(conv_handler)
+    dp.add_handler(conv_handler)
 
     
 
