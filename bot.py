@@ -109,6 +109,15 @@ def admin_handler(update, context):
        file = update.message.document[-1]
        update.message.replyDocument(update.message.document.thumb[-1])
        context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(file, 'rb'), filename="sample.pdf")    
+      
+       context.bot.SendTextMessage(update.Message.Chat.Id, "Type A Name For File");
+       if (update.Message.ReplyToMessage.Text.Contains("your username"))
+          {
+            
+   
+            context.bot.SendChatAction(update.Message.Chat.Id, ChatAction.Typing);
+            context.bot.SendTextMessage(update.Message.Chat.Id, "Username has been successfully saved!");
+          }
     
     
     
