@@ -80,6 +80,7 @@ def photo_handler(update, context):
     print (fileid)
     
 def file_handler(update, context):
+    update.message.reply_text("I Recognied This as a document ")
     
     fileid = file_id = update.message.photo[-1].file_id
     img = 'AgACAgUAAxkBAAPhYY_0PJPm26fFXI1CY16m3lzbxFEAAqytMRuuy3lUA0If8V2l7rYBAAMCAAN5AAMiBA'
@@ -126,10 +127,10 @@ def main():
     dp.add_handler(CommandHandler("hai", hai))
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.all, admin_handler))
+    dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.photo, photo_handler))
     dp.add_handler(MessageHandler(Filters.document, file_handler))
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.all, admin_handler))
     
 
     # log all errors
