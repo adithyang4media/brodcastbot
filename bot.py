@@ -113,7 +113,7 @@ def rename(update, context):
     update.message.reply_text("OK")
     fln=update.message.text
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
-    os.remove(filesname)
+    
     
     
 def admin_handler(update, context):
