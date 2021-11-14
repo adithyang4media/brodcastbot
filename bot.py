@@ -88,7 +88,7 @@ def file_handler(update, context):
     img = 'AgACAgUAAxkBAAPhYY_0PJPm26fFXI1CY16m3lzbxFEAAqytMRuuy3lUA0If8V2l7rYBAAMCAAN5AAMiBA'
     pic='t_logo.png'
     
-    
+    update.message.reply_text(update.message.document[-1].file_id)
     
     
     print (fileid)
