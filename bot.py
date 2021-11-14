@@ -91,7 +91,7 @@ def file_handler(update, context):
     print (fileid)
     
 def admin_handler(update, context):
-    if update.message.chat.id == 'g4_media' :
+    if update.message.chat.username == 'g4_media' :
        context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(pic,'rb'))
     
     
