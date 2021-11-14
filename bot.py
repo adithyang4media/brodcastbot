@@ -82,6 +82,8 @@ def photo_handler(update, context):
     
 def file_handler(update, context):
     update.message.reply_text(update.message.document.mime_type)
+    update.message.reply_text(update.message.document.file_name)
+    update.message.reply_text(update.message.document.file_id)
     update.message.reply_text("I Recognied This as a document ")
     print (update.message.document.file_name)
     
