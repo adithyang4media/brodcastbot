@@ -76,7 +76,7 @@ def photo_handler(update, context):
     pic='t_logo.png'
     
     
-    update.message.reply_text(update.message.photo.file_name)
+    update.message.reply_photo(update.message.photo[-1])
     
     print (fileid)
     
