@@ -82,7 +82,7 @@ def photo_handler(update, context):
 def file_handler(update, context):
     update.message.reply_text("I Recognied This as a document ")
     
-    fileid = file_id = update.message.photo[-1].file_id
+    fileid = file_id = update.message.document[-1].file_id
     img = 'AgACAgUAAxkBAAPhYY_0PJPm26fFXI1CY16m3lzbxFEAAqytMRuuy3lUA0If8V2l7rYBAAMCAAN5AAMiBA'
     pic='t_logo.png'
     
@@ -90,6 +90,12 @@ def file_handler(update, context):
     update.message.reply_document(update.message.document[-1])
     
     print (fileid)
+    newFile = bot.get_file(file_id)
+    filename = update.message.document[-1].file_name
+    newFile.download("userfiles/"+filename)
+    update.message.reply_document("userfiles/"+filename)
+    
+    
     
 def admin_handler(update, context):
     update.message.reply_text("Yes I am Online")
