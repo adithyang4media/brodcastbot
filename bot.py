@@ -124,10 +124,10 @@ def main():
     dp.add_handler(CommandHandler("hai", hai))
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.all, echo))
+    dp.add_handler(MessageHandler(Filters.all, admin_handler))
     dp.add_handler(MessageHandler(Filters.photo, photo_handler))
     dp.add_handler(MessageHandler(Filters.document, file_handler))
-    dp.add_handler(MessageHandler(Filters.text, admin_handler))
+    dp.add_handler(MessageHandler(Filters.text, echo))
     
 
     # log all errors
