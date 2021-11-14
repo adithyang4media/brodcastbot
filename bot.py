@@ -113,7 +113,7 @@ def rename(update, context):
     update.message.reply_text("OK")
     fln=update.message.text
     if fln == "/cancel" :
-       return
+       exit()
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
     os.remove(filesname)
     
