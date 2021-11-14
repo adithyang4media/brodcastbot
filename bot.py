@@ -134,7 +134,7 @@ def admin_handler(update, context):
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
-    
+    update.message.reply_text('Update "%s" caused error "%s"' + context.error)
     
 def cancel(update, context):
     update.message.reply_text("Current Operation Canceled")
