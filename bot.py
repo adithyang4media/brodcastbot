@@ -57,6 +57,7 @@ def echo(update, context):
     
     if update.message.text.lower() == 'hai' or update.message.text.lower() == 'hi' :
        update.message.reply_text("hai how are you") 
+       update.message.reply_text("❤️") 
        update.message.reply_text(sender)
        pic='t_logo.png'
        
