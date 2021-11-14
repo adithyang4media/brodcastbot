@@ -133,6 +133,7 @@ def rename(update, context):
        os.execl(python, python, * sys.argv)
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
     os.remove(filesname)
+    update.message.reply_text("Thank You Have A Nice Day")
     
     
 def admin_handler(update, context):
