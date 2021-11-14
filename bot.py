@@ -19,6 +19,7 @@ import logging
 import telegram
 import os
 import sys
+import requests
 
 import bot
 from telegram.ext import ConversationHandler
@@ -67,7 +68,20 @@ def echo(update, context):
        pic='t_logo.png'
        
        context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(pic,'rb'))
-       
+    
+    elif "http" in mes: 
+         if str(is_downloadable(mes)):
+            update.message.reply_text("Hey it is an Downloadable Link")
+            if mes.find('/'):
+               filesname=mes.rsplit('/', 1)[1]
+               url = mes
+               r = requests.get(url, allow_redirects=True)
+
+               open(filesname, 'wb').write(r.content)
+               context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
+               os.remove(filesname)
+               
+         else : update.message.reply_text("Hey it is not an Downloadable Link")
     
     update.message.reply_text(update.message.text)
     
