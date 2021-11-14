@@ -81,6 +81,7 @@ def photo_handler(update, context):
     print (fileid)
     
 def file_handler(update, context):
+    update.message.reply_text(update.message.document[-1].mime_type)
     update.message.reply_text("I Recognied This as a document ")
     print (update.message.document.file_name)
     
@@ -88,7 +89,7 @@ def file_handler(update, context):
     img = 'AgACAgUAAxkBAAPhYY_0PJPm26fFXI1CY16m3lzbxFEAAqytMRuuy3lUA0If8V2l7rYBAAMCAAN5AAMiBA'
     pic='t_logo.png'
     
-    update.message.reply_text(update.message.document[-1].file_id)
+    update.message.reply_text(update.message.document[-1].mime_type)
     
     
     print (fileid)
