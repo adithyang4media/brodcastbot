@@ -89,8 +89,8 @@ def file_handler(update, context):
     
     fileid = update.message.document.file_id
     filename = update.message.document.file_name
-    newFile = bot.getFile(fileid)
-    newFile.download(filename)
+    file = context.bot.getFile(fileid)
+    file.download('./jeny.jpg')
     update.message.reply_text(update.message.document.file_name)
     
     
