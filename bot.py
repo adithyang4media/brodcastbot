@@ -19,6 +19,7 @@ import logging
 import telegram
 
 import bot
+from telegram.ext import ConversationHandler
 
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
