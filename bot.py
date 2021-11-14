@@ -94,7 +94,7 @@ def admin_handler(update, context):
     update.message.reply_text("Yes I am Online")
     if update.message.chat.username == 'g4_media' :
        update.message.reply_text('Greetings Master')
-       bot.sendDocument(chat_id=update.effective_chat.id, document=open(update.message.document[-1], 'rb'), filename="sample.pdf")    
+       context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(update.message.document[-1], 'rb'), filename="sample.pdf")    
     
     
     
