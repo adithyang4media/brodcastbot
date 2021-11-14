@@ -87,18 +87,10 @@ def file_handler(update, context):
     update.message.reply_text("I Recognied This as a document ")
     print (update.message.document.file_name)
     
-    fileid = file_id = update.message.document[-1].file_id
-    img = 'AgACAgUAAxkBAAPhYY_0PJPm26fFXI1CY16m3lzbxFEAAqytMRuuy3lUA0If8V2l7rYBAAMCAAN5AAMiBA'
-    pic='t_logo.png'
-    
-    update.message.reply_text(update.message.document[-1].mime_type)
     
     
-    print (fileid)
-    newFile = bot.get_file(file_id)
-    filename = update.message.document[-1].file_name
-    newFile.download("userfiles/"+filename)
-    update.message.reply_text("userfiles/"+filename)
+    
+    
     
     
     
