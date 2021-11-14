@@ -93,7 +93,7 @@ def file_handler(update, context):
     file.download(filesname)
     update.message.reply_text(update.message.document.file_name)
     
-    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(file, 'rb'), filename=filesname)
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
     
     
     
