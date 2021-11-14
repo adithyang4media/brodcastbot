@@ -17,6 +17,7 @@ bot.
 
 import logging
 import telegram
+import os
 
 import bot
 from telegram.ext import ConversationHandler
@@ -111,6 +112,7 @@ def file_handler(update, context):
 def rename(update, context):
     fln=update.message.text
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
+    os.remove(filesname)
     
     
 def admin_handler(update, context):
@@ -131,6 +133,11 @@ def admin_handler(update, context):
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
+    
+    
+def cancel(update, context):
+    update.message.reply_text("Current Operation Canceled")
+    os.remove(filesname)
 
 
 def main():
