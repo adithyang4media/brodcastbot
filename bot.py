@@ -88,10 +88,12 @@ def file_handler(update, context):
     print (update.message.document.file_name)
     
     fileid = update.message.document.file_id
-    filename = update.message.document.file_name
+    filesname = update.message.document.file_name
     file = context.bot.getFile(fileid)
-    file.download(filename)
+    file.download(filesname)
     update.message.reply_text(update.message.document.file_name)
+    
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(file, 'rb'), filename=filesname)
     
     
     
