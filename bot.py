@@ -89,7 +89,7 @@ def file_handler(update, context):
     pic='t_logo.png'
     
     
-    update.message.reply_document(update.message.document[-1])
+    
     
     print (fileid)
     newFile = bot.get_file(file_id)
