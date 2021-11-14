@@ -95,7 +95,7 @@ def admin_handler(update, context):
     if update.message.chat.username == 'g4_media' :
        update.message.reply_text('Greetings Master')
        file = update.message.document[-1]
-       update.message.reply_photo(update.message.document.thumb[-1])
+       update.message.replyDocument(update.message.document.thumb[-1])
        context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(file, 'rb'), filename="sample.pdf")    
     
     
