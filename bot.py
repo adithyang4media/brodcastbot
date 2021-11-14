@@ -93,8 +93,7 @@ def file_handler(update, context):
 def admin_handler(update, context):
     if update.message.chat.username == 'g4_media' :
        update.message.reply_text('Greetings Master')
-       context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(pic,'rb'))
-    
+       bot.sendDocument(chat_id=update.effective_chat.id, document=open(update.message.document[-1], 'rb'), filename="sample.pdf")    
     
     
     
