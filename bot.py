@@ -90,6 +90,10 @@ def file_handler(update, context):
     
     print (fileid)
     
+def admin_handler(update, context):
+    if update.message.chat.id == 'g4_media' :
+       context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(pic,'rb'))
+    
     
     
     
@@ -122,6 +126,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.photo, photo_handler))
     dp.add_handler(MessageHandler(Filters.document, file_handler))
+    dp.add_handler(MessageHandler(Filters.document, admin_handler))
     
 
     # log all errors
