@@ -43,6 +43,8 @@ GENDER, NAMER, VOICE, BIO = range(4)
 def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi!')
+    update.message.reply_text('This Bot Was Made By @g4_media')
+    update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
 
 
 def help(update, context):
@@ -147,6 +149,10 @@ def rename(update, context):
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
     os.remove(filesname)
     update.message.reply_text("Thank You Have A Nice Day")
+    update.message.reply_text('This Bot Was Made By @g4_media')
+    update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+
+
     
     
 def admin_handler(update, context):
@@ -182,7 +188,10 @@ def audio_handler(update, context):
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=voicename)
     os.remove(filesname)
-    
+    update.message.reply_text('This Bot Was Made By @g4_media')
+    update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+
+
     
     
 def voice_handler(update, context):
@@ -220,6 +229,10 @@ def voup(update, context):
     context.bot.sendAudio(chat_id=update.effective_chat.id, audio=open(fln, 'rb'), filename=fln)
     os.remove(fln)
     update.message.reply_text("Thank You Have A Nice Day")
+    update.message.reply_text('This Bot Was Made By @g4_media')
+    update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+
+
 
 
 def error(update, context):
