@@ -312,7 +312,7 @@ def main():
 
     # on noncommand i.e message - echo the message on Telegram
     # dp.add_handler(MessageHandler(Filters.text, echo))
-    dp.add_handler(MessageHandler(Filters.photo, photo_handler))
+    # dp.add_handler(MessageHandler(Filters.photo, photo_handler))
     # dp.add_handler(MessageHandler(Filters.document, file_handler))
     # dp.add_handler(MessageHandler(Filters.all, admin_handler))
     
