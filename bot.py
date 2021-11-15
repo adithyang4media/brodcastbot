@@ -222,7 +222,7 @@ def voup(update, context):
     update.message.reply_text("OK")
     fln=update.message.text
     
-    if fln == "/cancel" :
+    if fln == "/restart" :
        python = sys.executable
        os.execl(python, python, * sys.argv)
       
@@ -252,6 +252,7 @@ def error(update, context):
 def cancel(update, context):
     update.message.reply_text("Current Operation Canceled")
     os.remove(filesname)
+    return ConversationHandler.END
 
 
 def main():
@@ -297,7 +298,7 @@ def main():
             VOICE: [MessageHandler(Filters.text, voup)]
             
         },
-        fallbacks=[CommandHandler('cancel', cancel)],
+        fallbacks=[MessageHandler(Filters.command, cancel)],
     )
  
     dp.add_handler(con_handler)
