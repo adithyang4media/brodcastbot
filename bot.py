@@ -119,7 +119,7 @@ def echo(update, context):
                #open(filesname, 'wb').write(r.content)
                #context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
                #os.remove(filesname)
-               update.message.reply_text(download(url = mes, fname=filesname))
+               print(download(url = mes, fname=filesname))
                
          else : update.message.reply_text("Hey it is not an Downloadable Link")
     
