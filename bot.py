@@ -187,7 +187,7 @@ def voice_handler(update, context):
     
     update.message.reply_text(update.message.voice.file_id)
     update.message.reply_text("I Recognied This as a Voice Message ")
-    print (update.voice.audio.file_name)
+    
     update.message.reply_text("Please Enter Name For Audio File with Desired Extention ")
     
     return VOICE
