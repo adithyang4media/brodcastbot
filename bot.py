@@ -167,7 +167,7 @@ def audio_handler(update, context):
     update.message.reply_text(update.message.audio.mime_type)
     update.message.reply_text(update.message.audio.file_name)
     update.message.reply_text(update.message.audio.file_id)
-    update.message.reply_text("I Recognied This as a document ")
+    update.message.reply_text("I Recognied This as a Audio File ")
     print (update.message.audio.file_name)
     
     
@@ -177,6 +177,25 @@ def audio_handler(update, context):
     file = context.bot.getFile(fileid)
     file.download(filesname)
     update.message.reply_text(update.message.audio.file_name)
+    
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
+    
+    
+    
+def voice_handler(update, context):
+    update.message.reply_text(update.message.voice.mime_type)
+    update.message.reply_text(update.message.voice.file_name)
+    update.message.reply_text(update.message.voice.file_id)
+    update.message.reply_text("I Recognied This as a Voice Message ")
+    print (update.voice.audio.file_name)
+    
+    
+    global filesname
+    fileid = update.message.voice.file_id
+    filesname = update.message.voice.file_name
+    file = context.bot.getFile(fileid)
+    file.download(filesname)
+    update.message.reply_text(update.message.voice.file_name)
     
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
 
@@ -230,6 +249,7 @@ def main():
   
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.audio, audio_handler))
+    dp.add_handler(MessageHandler(Filters.voice, voice_handler))
 
     
 
