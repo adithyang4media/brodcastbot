@@ -225,6 +225,9 @@ def voup(update, context):
     if fln == "/restart" :
        python = sys.executable
        os.execl(python, python, * sys.argv)
+    elif fln == "/cancel" :
+         update.message.reply_text("Current Operation Canceled")
+         return ConversationHandler.END
       
     global file
     
