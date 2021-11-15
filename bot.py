@@ -160,7 +160,25 @@ def admin_handler(update, context):
        
     
     
+
     
+    
+def audio_handler(update, context):
+    update.message.reply_text(update.message.audio.mime_type)
+    update.message.reply_text(update.message.audio.file_name)
+    update.message.reply_text(update.message.audio.file_id)
+    update.message.reply_text("I Recognied This as a document ")
+    print (update.message.audio.file_name)
+    
+    
+    global filesname
+    fileid = update.message.audio.file_id
+    filesname = update.message.audio.file_name
+    file = context.bot.getFile(fileid)
+    file.download(filesname)
+    update.message.reply_text(update.message.audio.file_name)
+    
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
 
 
 
@@ -211,6 +229,7 @@ def main():
     dp.add_handler(conv_handler)
   
     dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.audio, audio_handler))
 
     
 
