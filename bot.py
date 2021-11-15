@@ -174,11 +174,14 @@ def audio_handler(update, context):
     global filesname
     fileid = update.message.audio.file_id
     filesname = update.message.audio.file_name
+    voicename = filename + ".ogg"
     file = context.bot.getFile(fileid)
     file.download(filesname)
     update.message.reply_text(update.message.audio.file_name)
     
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=voicename)
+    os.remove(filesname)
     
     
     
