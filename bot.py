@@ -114,7 +114,7 @@ def echo(update, context):
     print(update.message.text)
 
 def photo_handler(update, context):
-    
+    global fileid
     fileid = file_id = update.message.photo[-1].file_id
     img = 'AgACAgUAAxkBAAPhYY_0PJPm26fFXI1CY16m3lzbxFEAAqytMRuuy3lUA0If8V2l7rYBAAMCAAN5AAMiBA'
     pic='t_logo.png'
@@ -123,6 +123,9 @@ def photo_handler(update, context):
     update.message.reply_photo(update.message.photo[-1])
     
     print (fileid)
+    update.message.reply_text("Please Enter Name For image File with Desired Extention ")
+    
+    return IMG
     
 def file_handler(update, context):
     update.message.reply_text(update.message.document.mime_type)
@@ -246,6 +249,36 @@ def voup(update, context):
     update.message.reply_text("Thank You Have A Nice Day")
     update.message.reply_text('This Bot Was Made By @g4_media')
     update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+    
+    
+def imgup(update, context):
+    update.message.reply_text("OK")
+    fln=update.message.text
+    
+    if fln == "/restart" :
+       python = sys.executable
+       os.execl(python, python, * sys.argv)
+    elif fln == "/cancel" :
+         update.message.reply_text("Current Operation Canceled")
+         return ConversationHandler.END
+      
+    global file
+    
+    
+    file = context.bot.getFile(fileid)
+    file.download(fln)
+    update.message.reply_text(fln)
+    
+    
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(fln, 'rb'), filename=fln)
+    
+    os.remove(fln)
+    update.message.reply_text("Thank You Have A Nice Day")
+    update.message.reply_text('This Bot Was Made By @g4_media')
+    update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+    
+    
+    
 
 
 
@@ -308,6 +341,18 @@ def main():
     )
  
     dp.add_handler(con_handler)
+  
+    conc_handler = ConversationHandler(
+        entry_points=[MessageHandler(Filters.photo, photo_handler)],
+        states={
+            
+            IMG: [MessageHandler(Filters.text, imgup)]
+            
+        },
+        fallbacks=[MessageHandler(Filters.command, cancel)],
+    )
+ 
+    dp.add_handler(conc_handler)
   
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.audio, audio_handler))
