@@ -70,6 +70,10 @@ def echo(update, context):
        update.message.reply_text("❤️") 
        update.message.reply_text(sender)
        pic='t_logo.png'
+       update.message.reply_text('This Bot Was Made By @g4_media')
+       update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+
+
        
        context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(pic,'rb'))
     
