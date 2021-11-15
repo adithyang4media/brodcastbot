@@ -43,6 +43,7 @@ GENDER, NAMER, VOICE, BIO = range(4)
 def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi!')
+    update.message.reply_text('I Am Online')
     update.message.reply_text('This Bot Was Made By @g4_media')
     update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
 
