@@ -187,6 +187,8 @@ def voice_handler(update, context):
     
     update.message.reply_text(update.message.voice.file_id)
     update.message.reply_text("I Recognied This as a Voice Message ")
+    global fileid
+    fileid = update.message.voice.file_id
     
     update.message.reply_text("Please Enter Name For Audio File with Desired Extention ")
     
@@ -204,7 +206,7 @@ def voup(update, context):
        os.execl(python, python, * sys.argv)
       
     global file
-    fileid = update.message.voice.file_id
+    
     
     file = context.bot.getFile(fileid)
     file.download(fln)
