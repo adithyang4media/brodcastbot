@@ -50,27 +50,7 @@ def start(update, context):
 def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Help!')
-    update.message.reply_text("This is a Multi Function Bot \n
-This Bot was Made By @g4_media\n
-\n
-This Bot Can Rename Files Upto 100MB\n
-	For This you Have to send the document to this bot\n
-	And provide new name whwn asked\n
-\n
-This Bot Can Convert Voice Messege to audio file and audio document\n
-	For this you Have to send the voice message to this bot\n
-	And provide filename with disired filetype extention\n
-	eg : music.mp3\n
-	You will get the voice message as audio file and audio document\n
-\n
-This Bot Can Convert Audio file to voice message\n
-	For this you have to send the audio file to ths bot\n
-	And you will get the audio file as voice message\n
-\n
-This Bot Can Clear Captions of image\n
-	Just Send the image \n
-	You will get the Image as caption cleared\n
-")
+    update.message.reply_text("This is a Multi Function Bot\nThis Bot was Made By @g4_media\n\nThis Bot Can Rename Files Upto 100MB\n	For This you Have to send the document to this bot\n	And provide new name whwn asked\n\nThis Bot Can Convert Voice Messege to audio file and audio document\n	For this you Have to send the voice message to this bot\n	And provide filename with disired filetype extention\n	eg : music.mp3\n	You will get the voice message as audio file and audio document\n\nThis Bot Can Convert Audio file to voice message\n	For this you have to send the audio file to ths bot\n	And you will get the audio file as voice message\n\nThis Bot Can Clear Captions of image\n	Just Send the image \n	You will get the Image as caption cleared")
     
 def fuck(update, context):
     """Send a message when the command /fuck is issued."""
