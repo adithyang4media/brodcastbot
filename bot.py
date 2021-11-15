@@ -152,9 +152,12 @@ def file_handler(update, context):
 def rename(update, context):
     update.message.reply_text("OK")
     fln=update.message.text
-    if fln == "/cancel" :
+    if fln == "/restart" :
        python = sys.executable
        os.execl(python, python, * sys.argv)
+    elif fln == "/cancel" :
+         update.message.reply_text("Current Operation Canceled")
+         return ConversationHandler.END
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
     os.remove(filesname)
     update.message.reply_text("Thank You Have A Nice Day")
