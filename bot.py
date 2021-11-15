@@ -61,6 +61,22 @@ def fuck(update, context):
 def hai(update, context):
     """Send a message when the command /hai is issued."""
     update.message.reply_text('hello how are you')
+    
+import requests
+from tqdm import tqdm
+def download(url, fname):
+    resp = requests.get(url, stream=True)
+    total = int(resp.headers.get('content-length', 0))
+    with open(fname, 'wb') as file, tqdm(
+            desc=fname,
+            total=total,
+            unit='iB',
+            unit_scale=True,
+            unit_divisor=1024,
+    ) as bar:
+        for data in resp.iter_content(chunk_size=1024):
+            size = file.write(data)
+            bar.update(size)
 
 
 def echo(update, context):
@@ -98,11 +114,12 @@ def echo(update, context):
             if mes.find('/'):
                filesname=mes.rsplit('/', 1)[1]
                url = mes
-               r = requests.get(url, allow_redirects=True)
+               #r = requests.get(url, allow_redirects=True)
 
-               open(filesname, 'wb').write(r.content)
-               context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
-               os.remove(filesname)
+               #open(filesname, 'wb').write(r.content)
+               #context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
+               #os.remove(filesname)
+               update.message.reply_text(download(url = mes, fname=filesname))
                
          else : update.message.reply_text("Hey it is not an Downloadable Link")
     
