@@ -184,7 +184,7 @@ def audio_handler(update, context):
     
 def voice_handler(update, context):
     update.message.reply_text(update.message.voice.mime_type)
-    update.message.reply_text(update.message.voice.file_name)
+    
     update.message.reply_text(update.message.voice.file_id)
     update.message.reply_text("I Recognied This as a Voice Message ")
     print (update.voice.audio.file_name)
