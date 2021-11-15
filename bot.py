@@ -214,7 +214,8 @@ def voup(update, context):
     
     
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(fln, 'rb'), filename=fln)
-    os.remove(filesname)
+    context.bot.sendAudio(chat_id=update.effective_chat.id, audio=open(fln, 'rb'), filename=fln)
+    os.remove(fln)
     update.message.reply_text("Thank You Have A Nice Day")
 
 
