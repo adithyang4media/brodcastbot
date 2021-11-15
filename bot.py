@@ -188,17 +188,32 @@ def voice_handler(update, context):
     update.message.reply_text(update.message.voice.file_id)
     update.message.reply_text("I Recognied This as a Voice Message ")
     print (update.voice.audio.file_name)
+    update.message.reply_text("Please Enter Name For Audio File with Desired Extention ")
+    
+    return VOICE
     
     
-    global filesname
-    fileid = update.message.voice.file_id
-    filesname = update.message.voice.file_name
-    file = context.bot.getFile(fileid)
-    file.download(filesname)
-    update.message.reply_text(update.message.voice.file_name)
-    
-    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
 
+    
+def voup(update, context):
+    update.message.reply_text("OK")
+    fln=update.message.text
+    
+    if fln == "/cancel" :
+       python = sys.executable
+       os.execl(python, python, * sys.argv)
+      
+    global file
+    fileid = update.message.voice.file_id
+    
+    file = context.bot.getFile(fileid)
+    file.download(fln)
+    update.message.reply_text(fln)
+    
+    
+    context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(fln, 'rb'), filename=fln)
+    os.remove(filesname)
+    update.message.reply_text("Thank You Have A Nice Day")
 
 
 def error(update, context):
@@ -246,6 +261,18 @@ def main():
     )
  
     dp.add_handler(conv_handler)
+  
+    con_handler = ConversationHandler(
+        entry_points=[MessageHandler(Filters.voice, voice_handler)],
+        states={
+            
+            VOICE: [MessageHandler(Filters.text, voup)]
+            
+        },
+        fallbacks=[CommandHandler('cancel', cancel)],
+    )
+ 
+    dp.add_handler(con_handler)
   
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.audio, audio_handler))
