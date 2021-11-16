@@ -159,9 +159,11 @@ def rename(update, context):
     update.message.reply_text("OK")
     fln=update.message.text
     if fln == "/restart" :
+       os.remove(filesname)
        python = sys.executable
        os.execl(python, python, * sys.argv)
     elif fln == "/cancel" :
+         os.remove(filesname)
          update.message.reply_text("Current Operation Canceled")
          return ConversationHandler.END
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
