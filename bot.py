@@ -97,7 +97,8 @@ def echo(update, context):
          if str(is_downloadable(mes)):
             update.message.reply_text("Hey it is an Downloadable Link")
             if mes.find('/'):
-               filesname=mes.rsplit('/', 1)[1]
+               filename=mes.rsplit('/', 1)[1]
+               filesname=filename[-10]
                url = mes
                r = requests.get(url, allow_redirects=True)
 
