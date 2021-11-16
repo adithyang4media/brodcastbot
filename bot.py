@@ -143,7 +143,7 @@ def file_handler(update, context):
     update.message.reply_text(update.message.document.file_name)
     
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
-    if update.message.document.mime_type == image/jpeg or update.message.document.mime_type == image/png :
+    if update.message.document.mime_type == "image/jpeg" or update.message.document.mime_type == "image/png" :
        update.message.reply_text("Hey this is an image file")
        context.bot.sendPhoto(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
     
