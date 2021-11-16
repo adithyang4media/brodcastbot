@@ -21,9 +21,6 @@ import os
 import sys
 import requests
 
-from urllib import urlretrieve
-from progressbar import ProgressBar, Percentage, Bar
-
 
 
 
@@ -103,11 +100,10 @@ def echo(update, context):
                filename=mes.rsplit('/', 1)[1]
                filesname=filename[-10:]
                url = mes
-               pbar = ProgressBar(widgets=[Percentage(), Bar()])
-               urlretrieve(url, fileName, reporthook=dlProgress)
+               r = requests.get(url, allow_redirects=True)
 
-               def dlProgress(count, blockSize, totalSize):
-                   pbar.update( int(count * blockSize * 100 / totalSize) )
+               open(filesname, 'wb').write(r.content)
+               context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=filesname)
                os.remove(filesname)
               
                
