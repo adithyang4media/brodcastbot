@@ -172,6 +172,7 @@ def rename(update, context):
     update.message.reply_text("Thank You Have A Nice Day")
     update.message.reply_text('This Bot Was Made By @g4_media')
     update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+    return ConversationHandler.END
 
 
     
@@ -211,6 +212,7 @@ def audio_handler(update, context):
     os.remove(filesname)
     update.message.reply_text('This Bot Was Made By @g4_media')
     update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+    return ConversationHandler.END
 
 
     
@@ -255,6 +257,7 @@ def voup(update, context):
     update.message.reply_text("Thank You Have A Nice Day")
     update.message.reply_text('This Bot Was Made By @g4_media')
     update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+    return ConversationHandler.END
     
     
 def imgup(update, context):
@@ -282,6 +285,7 @@ def imgup(update, context):
     update.message.reply_text("Thank You Have A Nice Day")
     update.message.reply_text('This Bot Was Made By @g4_media')
     update.message.reply_text('Please Consider Subscribing our Youtube Channel https://www.youtube.com/channel/UCad4U0t57KqjvHxqqdmZW_w')
+    return ConversationHandler.END
     
     
     
