@@ -150,7 +150,7 @@ def file_handler(update, context):
     
     update.message.reply_text("Enter File Name With Extention")
     if update.message.document.mime_type == "video/mp4" :
-      update.message.reply_text("Please send "." to send it as an video")
+      update.message.reply_text("Please send '.' to send it as an video")
     
     return NAMER
     
