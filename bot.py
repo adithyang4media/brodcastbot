@@ -149,6 +149,8 @@ def file_handler(update, context):
        context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(filesname,'rb'))
     
     update.message.reply_text("Enter File Name With Extention")
+    if update.message.document.mime_type == "video/mp4" :
+      update.message.reply_text("Please send "." to send it as an video")
     
     return NAMER
     
@@ -167,6 +169,8 @@ def rename(update, context):
          os.remove(filesname)
          update.message.reply_text("Current Operation Canceled")
          return ConversationHandler.END
+    elif fln == "." :
+         context.bot.send_video(chat_id=update.effective_chat.id, video=open(filesname,'rb'))
     context.bot.sendDocument(chat_id=update.effective_chat.id, document=open(filesname, 'rb'), filename=fln)
     os.remove(filesname)
     update.message.reply_text("Thank You Have A Nice Day")
